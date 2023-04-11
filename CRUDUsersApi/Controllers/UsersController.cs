@@ -246,7 +246,7 @@ namespace CRUDUsersApi.Controllers
 
         }
 
-        [HttpGet("GetAllActive Users")]
+        [HttpGet("GetAllActiveUsers")]
         public ActionResult<List<User>> GetAllActiveUsers(string login, string password)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -340,8 +340,8 @@ namespace CRUDUsersApi.Controllers
             return Ok(ResponseList);
         }
 
-        [HttpDelete("DeletUser")]
-        public async Task<ActionResult> DeleteUser(string login, string password, string UserLogin, bool isHard)
+        [HttpDelete("DeleteUser")]
+        public async Task<ActionResult> DeleteUser(string login, string password, string UserLogin, bool IsHard)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
             var UserToDelete = _context.Users.Where(x => x.Login == UserLogin).FirstOrDefault();
@@ -358,7 +358,7 @@ namespace CRUDUsersApi.Controllers
             if (UserToDelete == default)
                 return BadRequest("User dosen't exist");
 
-            if (isHard)
+            if (IsHard)
             {
                 _context.Users.Remove(UserToDelete);
                 await _context.SaveChangesAsync();
