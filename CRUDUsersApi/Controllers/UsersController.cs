@@ -60,7 +60,7 @@ namespace CRUDUsersApi.Controllers
             }
         }
 
-        [HttpPost("Create User")]
+        [HttpPost("CreateUser")]
         public async Task<ActionResult> CreateUser(string login, string password, string UserLogin, string UserPassword, string UserName, int UserGender, DateTime? UserBirthday, bool isAdmin)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -115,7 +115,7 @@ namespace CRUDUsersApi.Controllers
             return Ok("User Added");
         }
 
-        [HttpPut("Update User")]
+        [HttpPut("UpdateUser")]
         public async Task<ActionResult> UpdateUser(string login, string password, string UserLogin, string? NewUserName = null, int NewUserGender = -1, DateTime? NewUserBirthday = null)
         {
             // Данный метод не обязательно должен принимать все параметры для изминения  
@@ -157,7 +157,7 @@ namespace CRUDUsersApi.Controllers
             return Ok("User Updated");
         }
 
-        [HttpPut("Update Password")]
+        [HttpPut("UpdatePassword")]
         public async Task<ActionResult> UpdatePassword(string login, string password, string UserLogin, string NewPassword)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -184,7 +184,7 @@ namespace CRUDUsersApi.Controllers
             return Ok("User password updated");
         }
 
-        [HttpPut("Update Login")]
+        [HttpPut("UpdateLogin")]
         public async Task<ActionResult> UpdateLogin(string login, string password, string UserLogin, string NewLogin)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -214,7 +214,7 @@ namespace CRUDUsersApi.Controllers
             return Ok("User password updated");
         }
 
-        [HttpPut("User Recovery")]
+        [HttpPut("UserRecovery")]
         public async Task<ActionResult> RecoveryUser(string login, string password, string UserLogin)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -246,7 +246,7 @@ namespace CRUDUsersApi.Controllers
 
         }
 
-        [HttpGet("Get All Active Users")]
+        [HttpGet("GetAllActive Users")]
         public ActionResult<List<User>> GetAllActiveUsers(string login, string password)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -265,7 +265,7 @@ namespace CRUDUsersApi.Controllers
             return Ok(ActiveUsers);
         }
 
-        [HttpGet("Get User By Login")]
+        [HttpGet("GetUserByLogin")]
         public ActionResult<UserFields> GetUserByLogin(string login, string password, string UserLogin)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -293,7 +293,7 @@ namespace CRUDUsersApi.Controllers
             return BadRequest(userFields);
         }
 
-        [HttpGet("Get User")]
+        [HttpGet("GetUser")]
         public ActionResult<User> GetUser(string login, string password)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -307,7 +307,7 @@ namespace CRUDUsersApi.Controllers
             return Ok(RequestSender);
         }
 
-        [HttpGet("Get Older Users")]
+        [HttpGet("GetOlderUsers")]
         public ActionResult<List<User>> GetOlderUsers(string login, string password, int age)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
@@ -340,7 +340,7 @@ namespace CRUDUsersApi.Controllers
             return Ok(ResponseList);
         }
 
-        [HttpDelete("Delet User")]
+        [HttpDelete("DeletUser")]
         public async Task<ActionResult> DeleteUser(string login, string password, string UserLogin, bool isHard)
         {
             var RequestSender = _context.Users.Where(x => x.Login == login).FirstOrDefault();
