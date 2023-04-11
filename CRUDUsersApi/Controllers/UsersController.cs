@@ -105,7 +105,7 @@ namespace CRUDUsersApi.Controllers
                 CreatedBy = RequestSender.Login,
                 ModifiedOn = DateTime.Now,
                 ModifiedBy = RequestSender.Login,
-                RevokedOn = DateTime.MaxValue,      // Пользователь считается не активным если праставленна любая дата отличная от максимальной
+                RevokedOn = DateTime.MaxValue,      // Пользователь считается не активным если проставленна любая дата отличная от максимальной
                 RevokedBy = ""
             };
 
@@ -379,12 +379,6 @@ namespace CRUDUsersApi.Controllers
                 return Ok("Not hard remove sucessfull");
             }
 
-        }
-
-        [HttpGet("Get All Users")]
-        public ActionResult<List<User>> GetAllUsers()
-        {
-            return _context.Users.ToList();
         }
     }
 }
